@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartilla Digital de Matemáticas 1 Inclusiva</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header class="header" role="banner">
+        <a href="index.html" class="btn btn-secondary" aria-label="Volver al inicio del Campus">🏠 Inicio</a>
+        <h1 id="subject-title">Cargando Materia...</h1>
+        <div class="user-progress" aria-live="polite">
+            <p>Puntos: <span id="points-counter">0</span></p>
+            <p>Nivel: <span id="level-display">Novato Matemático</span></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="sidebar" role="navigation" aria-label="Temas de la materia">
+            <ul id="topics-list">
+                <!-- Temas se cargarán aquí dinámicamente -->
+            </ul>
+        </nav>
+
+        <main id="main-content" class="content-area" role="main" tabindex="-1">
+            <section id="topic-intro" aria-labelledby="topic-title">
+                <h2 id="topic-title">Bienvenido</h2>
+                <p id="topic-description" class="intro-text">Selecciona un tema para comenzar.</p>
+                <button id="start-reading" class="btn btn-primary" aria-label="Leer contenido en voz alta">
+                    🔊 Escuchar descripción
+                </button>
+            </section>
+
+            <section id="concepts-area" class="concepts-grid">
+                <!-- Conceptos se cargarán aquí -->
+            </section>
+
+            <section id="quiz-area" class="quiz-container" hidden>
+                <h3>¡Desafío Gamificado!</h3>
+                <div id="quiz-question" aria-live="assertive"></div>
+                <div id="quiz-options" class="options-grid"></div>
+                <p id="quiz-feedback" class="feedback" aria-live="polite"></p>
+            </section>
+
+            <section id="gamification-rewards" class="rewards-area">
+                <!-- Badges y premios -->
+            </section>
+        </main>
+    </div>
+
+    <footer class="accessibility-footer" role="contentinfo">
+        <div class="accessibility-controls">
+            <button id="toggle-contrast" class="btn btn-secondary" aria-label="Cambiar a alto contraste">
+                Cambiar Contraste
+            </button>
+            <button id="increase-font" class="btn btn-secondary" aria-label="Aumentar tamaño de letra">
+                A +
+            </button>
+            <button id="decrease-font" class="btn btn-secondary" aria-label="Disminuir tamaño de letra">
+                A -
+            </button>
+            <button id="toggle-tts" class="btn btn-secondary" aria-pressed="false">
+                Activar Lector Automático
+            </button>
+            <a href="autores.html" class="btn btn-secondary" aria-label="Ver créditos y autores del curso">👥 Autores</a>
+        </div>
+        <p>© 2026 - Educación Inclusiva y DUA para Matemáticas 1</p>
+    </footer>
+
+    <script src="data_derecho.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

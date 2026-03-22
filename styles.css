@@ -1,0 +1,318 @@
+:root {
+    --primary-color: #005a9c;
+    --secondary-color: #007bff;
+    --accent-color: #28a745;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-color: #ddd;
+    --font-size-base: 18px;
+    --transition-speed: 0.3s;
+}
+
+/* Tema de Alto Contraste */
+body.dark-theme {
+    --primary-color: #ffd700;
+    --secondary-color: #00ffff;
+    --accent-color: #00ff00;
+    --text-color: #ffffff;
+    --bg-color: #000000;
+    --card-bg: #1a1a1a;
+    --border-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.user-progress {
+    text-align: right;
+}
+
+.container {
+    display: flex;
+    min-height: calc(100vh - 160px);
+}
+
+.sidebar {
+    width: 300px;
+    background-color: var(--card-bg);
+    border-right: 2px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 1rem;
+}
+
+.sidebar-btn {
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.sidebar-btn:hover, .sidebar-btn:focus {
+    background-color: var(--secondary-color);
+    color: white;
+    outline: 4px solid var(--accent-color);
+}
+
+.sidebar-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.content-area {
+    flex: 1;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-text {
+    font-size: 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.concept-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.quiz-container {
+    background-color: var(--card-bg);
+    border: 3px solid var(--primary-color);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-top: 3rem;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.feedback {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.feedback.success {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: var(--accent-color);
+}
+
+.feedback.error {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+}
+
+.image-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.topic-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.topic-img:focus, .topic-img:hover {
+    transform: scale(1.02);
+}
+
+/* Estilos para la página principal */
+.landing-page .header {
+    text-align: center;
+    flex-direction: column;
+}
+
+.main-landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 2rem;
+    min-height: auto;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.welcome-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.course-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.course-card {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.course-card:hover, .course-card:focus {
+    border-color: var(--primary-color);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.course-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.course-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.course-card p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.course-card .btn {
+    display: inline-block;
+}
+
+.accessibility-footer {
+    background-color: var(--card-bg);
+    border-top: 2px solid var(--border-color);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.accessibility-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Foco accesible para usuarios de teclado */
+*:focus-visible {
+    outline: 5px solid var(--accent-color);
+    outline-offset: 2px;
+}

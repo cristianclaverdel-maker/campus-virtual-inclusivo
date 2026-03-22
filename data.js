@@ -1,0 +1,83 @@
+const contentData = {
+  "subject": "Matemáticas 1 - primer semestre",
+  "welcome_message": "¡Bienvenido a tu aventura matemática inclusiva! Esta cartilla está diseñada para que aprendas explorando.",
+  "topics": [
+    {
+      "id": 1,
+      "title": "Introducción y Números Reales",
+      "description": "Exploramos los números que usamos todos los días: naturales, enteros, racionales e irracionales.",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop",
+        "alt": "Imagen artística de números flotando en el espacio, representando la infinitud de los números reales."
+      },
+      "concepts": [
+        "Naturales: Los que sirven para contar (1, 2, 3...)",
+        "Enteros: Incluyen los negativos y el cero.",
+        "Racionales: Se pueden expresar como fracción.",
+        "Irracionales: No se pueden expresar como fracción exacta (como Pi)."
+      ],
+      "gamification": {
+        "challenge": "El Coleccionista de Números",
+        "points": 100
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál de estos es un número irracional?",
+          "options": ["5", "1/2", "Raíz de 2", "-3"],
+          "answer": 2,
+          "feedback": "¡Correcto! La raíz de 2 no tiene un decimal finito ni periódico."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Operaciones Básicas y Jerarquía",
+      "description": "Aprende el orden correcto para resolver problemas matemáticos complejos sin errores.",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop",
+        "alt": "Imagen ilustrativa de operaciones matemáticas básicas: suma, resta, multiplicación y división sobre un fondo de pizarra."
+      },
+      "concepts": [
+        "Paréntesis primero",
+        "Exponentes y raíces",
+        "Multiplicación y división",
+        "Suma y resta"
+      ],
+      "gamification": {
+        "challenge": "El Maestro del Orden",
+        "points": 150
+      },
+      "quiz": [
+        {
+          "question": "En 2 + 3 * 5, ¿qué se hace primero?",
+          "options": ["La suma", "La multiplicación", "Da igual", "Restar"],
+          "answer": 1,
+          "feedback": "¡Exacto! La multiplicación tiene prioridad sobre la suma."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Lógica y Conjuntos",
+      "description": "Descubre cómo agrupar objetos y las reglas de la lógica para pensar como un matemático.",
+      "concepts": [
+        "Conjunto: Colección de objetos bien definidos.",
+        "Unión: Juntar todos los elementos de dos conjuntos.",
+        "Intersección: Solo los elementos comunes.",
+        "Proposiciones: Afirmaciones que pueden ser verdaderas o falsas."
+      ],
+      "gamification": {
+        "challenge": "El Arquitecto de Conjuntos",
+        "points": 200
+      },
+      "quiz": [
+        {
+          "question": "Si el conjunto A tiene {1, 2} y B tiene {2, 3}, ¿cuál es la intersección?",
+          "options": ["{1, 2, 3}", "{2}", "{1, 3}", "{}"],
+          "answer": 1,
+          "feedback": "¡Correcto! El número 2 es el único que está en ambos conjuntos."
+        }
+      ]
+    }
+  ]
+};

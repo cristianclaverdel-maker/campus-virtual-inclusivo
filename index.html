@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Virtual Inclusivo - Primer Semestre</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme landing-page">
+    <header class="header" role="banner">
+        <h1>Curso: Educación Inclusiva</h1>
+        <p>Tu espacio de aprendizaje accesible y sin barreras</p>
+    </header>
+
+    <main class="container main-landing" role="main">
+        <section class="welcome-section" aria-labelledby="welcome-title">
+            <h2 id="welcome-title">Bienvenido a tu primer semestre</h2>
+            <p>Selecciona la materia que deseas explorar hoy:</p>
+        </section>
+
+        <div class="course-selector-grid">
+            <a href="matematicas.html" class="course-card" aria-label="Ir al curso de Matemáticas 1">
+                <div class="course-icon">🧮</div>
+                <h3>Matemáticas 1</h3>
+                <p>Números reales, conjuntos y lógica.</p>
+                <span class="btn btn-primary">Entrar al Curso</span>
+            </a>
+
+            <a href="derecho.html" class="course-card" aria-label="Ir al curso de Introducción al Derecho">
+                <div class="course-icon">⚖️</div>
+                <h3>Introducción al Derecho</h3>
+                <p>Conceptos básicos, normas y justicia.</p>
+                <span class="btn btn-primary">Entrar al Curso</span>
+            </a>
+
+            <a href="lenguas.html" class="course-card" aria-label="Ir al curso de Lenguas Extranjeras">
+                <div class="course-icon">🌍</div>
+                <h3>Lenguas Extranjeras</h3>
+                <p>Inglés básico, saludos y gramática.</p>
+                <span class="btn btn-primary">Entrar al Curso</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="accessibility-footer">
+        <div class="accessibility-controls">
+            <button id="toggle-contrast" class="btn btn-secondary">Cambiar Contraste</button>
+            <button id="toggle-tts-home" class="btn btn-secondary">🔊 Activar Lector Automático</button>
+            <a href="autores.html" class="btn btn-secondary" aria-label="Ver créditos y autores del curso">👥 Autores</a>
+        </div>
+        <p>© 2026 - UNIVERSIDAD NACIONAL ABIERTA Y A DISTANCIA</p>
+    </footer>
+
+    <script>
+        // Lógica de voz persistente y activada por defecto
+        let isTtsActive = localStorage.getItem('ttsEnabled') !== 'false'; // Por defecto true si no existe
+        
+        const speak = (text) => {
+            if (!isTtsActive) return;
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'es-ES';
+            window.speechSynthesis.speak(u);
+        };
+
+        // Anuncio inicial al cargar
+        window.onload = () => {
+            updateTtsButton();
+            if (isTtsActive) {
+                speak("Bienvenido al Campus Virtual Inclusivo. Estás en la página principal. Selecciona una materia pasando el cursor o usando la tecla tabulador.");
+            }
+        };
+
+        function updateTtsButton() {
+            const btn = document.getElementById('toggle-tts-home');
+            btn.textContent = isTtsActive ? "Lector Automático: ON" : "🔊 Activar Lector Automático";
+            btn.setAttribute('aria-pressed', isTtsActive);
+        }
+
+        document.getElementById('toggle-tts-home').onclick = (e) => {
+            isTtsActive = !isTtsActive;
+            localStorage.setItem('ttsEnabled', isTtsActive);
+            updateTtsButton();
+            if(isTtsActive) speak("Lector automático activado.");
+        };
+
+        document.getElementById('toggle-contrast').onclick = () => {
+            document.body.classList.toggle('dark-theme');
+            localStorage.setItem('mathTheme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        };
+
+        // Lectura de elementos informativos
+        document.querySelectorAll('h1, h2, p').forEach(el => {
+            el.setAttribute('tabindex', '0');
+            el.addEventListener('mouseenter', () => speak(el.textContent));
+            el.addEventListener('focus', () => speak(el.textContent));
+        });
+
+        // Eventos para las tarjetas de curso
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const title = card.querySelector('h3').textContent;
+                const desc = card.querySelector('p').textContent;
+                speak(`Curso de ${title}. ${desc}. Haz clic para entrar.`);
+            });
+            card.addEventListener('focus', () => {
+                const title = card.querySelector('h3').textContent;
+                speak(`Seleccionado: ${title}. Presiona enter para entrar.`);
+            });
+        });
+    </script>
+</body>
+</html>
