@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créditos y Autores - Campus Virtual Inclusivo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .authors-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-color);
+        }
+        .info-block {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+        .info-block:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .student-list {
+            list-style: none;
+            padding: 0;
+        }
+        .student-list li {
+            padding: 0.5rem 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        .student-list li::before {
+            content: "👤";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <header class="header" role="banner">
+        <a href="index.html" class="btn btn-secondary" aria-label="Volver al inicio del Campus">🏠 Inicio</a>
+        <h1>Créditos y Autores</h1>
+    </header>
+
+    <main class="container" role="main">
+        <div class="authors-container" id="main-content">
+            <div class="info-block" tabindex="0">
+                <span class="info-label">Institución</span>
+                <p>Universidad Nacional Abierta y a Distancia (UNAD)</p>
+            </div>
+            <div class="info-block" tabindex="0">
+                <span class="info-label">Dependencia</span>
+                <p>Vicerrectoría Académica y de Investigación</p>
+                <p>Unidad gestora: ECEDU</p>
+            </div>
+            <div class="info-block" tabindex="0">
+                <span class="info-label">Programa Académico</span>
+                <p>Especialización en Educación Superior y Transformación Digital</p>
+            </div>
+            <div class="info-block" tabindex="0">
+                <span class="info-label">Curso y Código</span>
+                <p>Educación Inclusiva - Código: 551045 (RAC 2)</p>
+            </div>
+            <div class="info-block" tabindex="0">
+                <span class="info-label">Estudiantes / Autores</span>
+                <ul class="student-list">
+                    <li>MALFI ALEJANDRA SILVA SIERRA</li>
+                    <li>CRISTIAN CAMILO LAVERDE LADINO</li>
+                    <li>DIEGO FERNANDO ARIAS ESCOBAR</li>
+                    <li>LEIDY LORENA ROSAS ROMO</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="accessibility-footer">
+        <div class="accessibility-controls">
+            <button id="toggle-contrast" class="btn btn-secondary">Cambiar Contraste</button>
+            <button id="toggle-tts-authors" class="btn btn-secondary">🔊 Activar Lector Automático</button>
+        </div>
+        <p>© 2026 - Universidad Nacional Abierta y a Distancia</p>
+    </footer>
+
+    <script>
+        let isTtsActive = localStorage.getItem('ttsEnabled') !== 'false';
+        
+        const speak = (text) => {
+            if (!isTtsActive) return;
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'es-ES';
+            window.speechSynthesis.speak(u);
+        };
+
+        window.onload = () => {
+            updateTtsButton();
+            if (isTtsActive) {
+                speak("Estás en la página de Créditos y Autores. Aquí encontrarás la información institucional y los nombres de los estudiantes creadores de este campus virtual.");
+            }
+        };
+
+        function updateTtsButton() {
+            const btn = document.getElementById('toggle-tts-authors');
+            btn.textContent = isTtsActive ? "Lector Automático: ON" : "🔊 Activar Lector Automático";
+        }
+
+        document.getElementById('toggle-tts-authors').onclick = (e) => {
+            isTtsActive = !isTtsActive;
+            localStorage.setItem('ttsEnabled', isTtsActive);
+            updateTtsButton();
+            if(isTtsActive) speak("Lector automático activado.");
+        };
+
+        document.getElementById('toggle-contrast').onclick = () => {
+            document.body.classList.toggle('dark-theme');
+            localStorage.setItem('mathTheme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        };
+
+        document.querySelectorAll('.info-block').forEach(block => {
+            block.addEventListener('mouseenter', () => speak(block.innerText));
+            block.addEventListener('focus', () => speak(block.innerText));
+        });
+    </script>
+</body>
+</html>
